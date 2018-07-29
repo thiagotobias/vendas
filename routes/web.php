@@ -1,4 +1,8 @@
 <?php
+$this->get('/', function () {
+    return redirect('api');
+});
+
 $this->group(array('prefix' => 'api'), function(){
     $this->get('/', function () {
         return response()->json(['message' => 'Venda API', 'status' => 'Conectado']);  
@@ -6,8 +10,4 @@ $this->group(array('prefix' => 'api'), function(){
     
     $this->resource('sellers', 'SellersController');
     $this->resource('sales', 'SalesController');    
-});
-
-$this->get('/', function () {
-    return redirect('api');
 });
