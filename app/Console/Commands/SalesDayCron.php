@@ -2,8 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Sale;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailRelatorioDiario;
+use Illuminate\Support\Carbon;
+use App\Models\Sale;
 
 class SalesDayCron extends Command
 {
@@ -19,7 +22,7 @@ class SalesDayCron extends Command
      *
      * @var string
      */
-    protected $description = 'Vendas do Dia.';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -38,13 +41,17 @@ class SalesDayCron extends Command
      */
     public function handle()
     {
-        // Inserir a Logica
-        // pegar todas as vendas do dia
-        //$date = Carbon::now();
+        $dateIni = Carbon::today();
         $date = Carbon::today();
-        //$date->toDateString();
+        $dateFim = $date->addMinutes(1439);
 
-        $sale = Sale::whereBetween('created_at', [$date->isMidnight(), $date->isEndOfDay()])
-            ->get();
+        $sales = Sale::whereBetween('created_at', [$dateIni, $dateFim ])->sum('sale_value');
+        $dados['date_ini'] = $dateIni;
+        $dados['date_fim'] = $dateFim;
+        $dados['total'] = $sales;
+
+        Mail::send(new EmailRelatorioDiario($dados));
+
+        $this->info('E-mail enviado com sucesso ...');
     }
 }

@@ -62,9 +62,20 @@ class SellerController extends Controller
      */
     public function show($id)
     {
-        $seller = $this->posts->find($id); 
+        $seller = $this->posts->find($id);
+        $allSales = $this->posts->findAllSales($id);
 
-        return view('site.seller.profile', compact('seller'));        
+        $dados['seller'] = $seller;
+        $dados['allSales'] = $allSales;
+
+        $totalVendas = 0;
+        foreach ($allSales as  $value) {
+            $totalVendas = $totalVendas + $value->sale_value; 
+        }
+
+        $dados['totalVendas'] = $totalVendas;
+        
+        return view('site.seller.profile', compact('dados'));
     }
 
     /**

@@ -95,5 +95,18 @@ class SellersController extends Controller
         }
 
         $seller->delete();
-    }    
+    }
+    
+    public function allSales($id)
+    {
+        $seller = Seller::join('sales', 'sales.seller_id', '=', 'sellers.id')->where('sellers.id','=',$id)->get();
+
+        if(!$seller) {
+            return response()->json([
+                'error'   => 'Registro não encontrado!',
+            ], 404);
+        }
+
+        return response()->json($seller);
+    }
 }

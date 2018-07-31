@@ -51,4 +51,11 @@ class PostsSeller {
         return json_decode( $response->getBody()->getContents() );
     }
 
+    public function findAllSales($id)
+    {
+        $response = $this->client->request('GET', "api/sellersales/{$id}");
+        
+        return json_decode( $response->getBody()->getContents() );
+    }
+
 }

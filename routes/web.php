@@ -9,7 +9,8 @@ $this->group(array('prefix' => 'api'), function(){
     });
     
     $this->resource('sellers', 'Api\SellersController');
-    $this->resource('sales', 'Api\SalesController');    
+    $this->resource('sales', 'Api\SalesController');
+    $this->get('sellersales/{id}', 'Api\SellersController@allSales');
 });
 
 // Rotas Site
