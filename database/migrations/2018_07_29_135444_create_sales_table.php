@@ -16,7 +16,6 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
             $table->decimal('sale_value', 10, 2);
-            $table->date('sale_date');
             $table->integer('seller_id')->unsigned();
             $table->foreign('seller_id')
                 ->references('id')

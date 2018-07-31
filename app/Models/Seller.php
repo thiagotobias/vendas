@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class Seller extends Model
 
     public function sales()
     {
-        return $this->hasMany('App\Sale');
+        return $this->hasMany('App\Models\Sale');
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Seller;
+use App\Models\Seller;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class SellersController extends Controller
 {
@@ -13,8 +14,8 @@ class SellersController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'name' => 'required|max:100',
-            'email' => 'required|email|unique:companies',
+            'name' => 'required|string|max:100',
+            'email' => 'required|string|email|max:60|unique:users',
         ]);
 
         if($validator->fails() ) {
@@ -28,7 +29,7 @@ class SellersController extends Controller
         $seller->fill($request->all());
         $seller->save();
 
-        return response()->json($seller = Seller::find($seller->id), 201);
+        return response()->json($seller, 201);
     }
 
     public function index()
@@ -67,7 +68,7 @@ class SellersController extends Controller
 
         $validator = Validator::make($data, [
             'name' => 'max:100',
-            'email' => 'email|unique:companies',
+            'email' => 'email',
         ]);
 
         if($validator->fails() ) {
