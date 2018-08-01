@@ -34,13 +34,13 @@
 								<th>R$ {{ $sale->sale_value }}</th>
 								<th>{{ $sale->created_at }}</th>
 								<th>
-									<a href="/sale/{{ $sale->id}}">Inspecionar</a>
+									<a class="btn btn-primary" role="button" href="/sale/{{ $sale->id}}">Inspecionar</a>
 								</th>
 								<th>
 									<form action="/sale/{{$sale->id}}" method="post">
 										{{ csrf_field() }}
 										{{ method_field('DELETE') }}										
-										<button class="button is-small is-danger">X</button>
+										<button class="button btn btn-danger">X</button>
 									</form>
 								</th>
 							</tr>
@@ -48,7 +48,7 @@
 					</tbody>
 				</table>
 			@endif
-			<a href="{{ url('sale/create') }}">Nova Venda</a>
+			<a class="btn btn-primary" role="button" href="{{ url('sale/create') }}">Nova Venda</a>
 		</div>
 	</div>
 @endsection

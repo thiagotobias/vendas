@@ -19,7 +19,7 @@
                     <button class="btn btn-primary" role="submit">Salvar</button>
                 </div>
 			</form>	
-			<a href=" {{ url('/seller')}} ">Ver todos os vendedores</a>		
+			<a class="btn btn-primary" role="button" href=" {{ url('/seller')}} ">Ver todos os vendedores</a>		
 		</div>
 	</div>
 @endsection

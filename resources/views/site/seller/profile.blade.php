@@ -22,7 +22,7 @@
 						<th>{{ $dados['seller']->commission }}%</th>
                         <th>{{ $dados['seller']->created_at }}</th>						
 						<th>
-							<a href="{{ url('/seller/' . $dados['seller']->id . '/edit')}}">Alterar</a>
+							<a class="btn btn-primary" role="button" href="{{ url('/seller/' . $dados['seller']->id . '/edit')}}">Alterar</a>
 						</th>
 					</tr>
 				</tbody>
@@ -69,9 +69,9 @@
 			@endif
 
 			<div>
-				<a href=" {{ url('/seller')}} ">Ver todos os vendedores</a>		
+				<a class="btn btn-primary" role="button" href=" {{ url('/seller')}} ">Ver todos os vendedores</a>		
 			</div>
-            <a href="{{ url('seller/create') }}">Novo Vendedor</a>
+            <a class="btn btn-primary" role="button" href="{{ url('seller/create') }}">Novo Vendedor</a>
 		</div>
 	</div>
 @endsection

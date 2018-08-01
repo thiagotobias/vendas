@@ -23,15 +23,15 @@
                         <th>R$ {{ $sale->sale_value }}</th>
                         <th>{{ $sale->created_at }}</th>					
 						<th>
-							<a href="{{ url('/sale/' . $sale->id . '/edit')}}">Alterar</a>
+							<a class="btn btn-primary" role="button" href="{{ url('/sale/' . $sale->id . '/edit')}}">Alterar</a>
 						</th>
 					</tr>
 				</tbody>
 			</table>
 			<div>
-				<a href=" {{ url('/sale')}} ">Ver todos as Vendas</a>		
+				<a class="btn btn-primary" role="button" href=" {{ url('/sale')}} ">Ver todos as Vendas</a>		
 			</div>
-            <a href="{{ url('sale/create') }}">Nova Venda</a>
+            <a class="btn btn-primary" role="button" href="{{ url('sale/create') }}">Nova Venda</a>
 		</div>
 	</div>
 @endsection

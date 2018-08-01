@@ -30,13 +30,13 @@
 								<th>{{ $seller->email }}</th>
 								<th>{{ $seller->commission }} %</th>
 								<th>
-									<a href="/seller/{{ $seller->id}}">Inspecionar</a>
+									<a class="btn btn-primary" role="button" href="/seller/{{ $seller->id}}">Inspecionar</a>
 								</th>
 								<th>
 									<form action="/seller/{{$seller->id}}" method="post">
 										{{ csrf_field() }}
 										{{ method_field('DELETE') }}										
-										<button class="button is-small is-danger">X</button>
+										<button class="button btn btn-danger">X</button>
 									</form>
 								</th>
 							</tr>
@@ -44,7 +44,7 @@
 					</tbody>
 				</table>
 			@endif
-			<a href="{{ url('seller/create') }}">Novo Vendedor</a>
+			<a class="btn btn-primary" role="button" href="{{ url('seller/create') }}">Novo Vendedor</a>
 		</div>
 	</div>
 @endsection
