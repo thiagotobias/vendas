@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Sale;
+use App\Models\Seller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -52,11 +53,21 @@ class SalesController extends Controller
             ], 422);
         }
 
+        $sellerP = Seller::select('commission')->find($data['seller_id']);
+        
+        $number = ($request->sale_value * $sellerP->commission) / 100;
+        $number =  number_format($number, 2, '.', '');
+
         $sale = new Sale();
+        $sale->commission_value = $number;
         $sale->fill($request->all());
         $sale->save();
 
-        return response()->json($sale, 201);
+        $retorno = new Sale();
+        $retorno = $retorno->select('sales.id','name','email','commission_value', 'sale_value', 'sales.created_at')
+            ->join('sellers', 'sales.seller_id', '=', 'sellers.id')->find($sale->id);
+
+        return response()->json($retorno, 201);
     }
 
     /**
@@ -118,7 +129,12 @@ class SalesController extends Controller
                 'errors'        => $validator->errors()
             ], 422);
         }
+        
+        $sellerP = Seller::select('commission')->find($sale->seller_id);        
+        $number = ($request->sale_value * $sellerP->commission) / 100;
+        $number =  number_format($number, 2, '.', '');
 
+        $sale->commission_value = $number;
         $sale->fill($request->all());
         $sale->save();
 

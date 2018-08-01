@@ -19,7 +19,7 @@
                     <th>{{ $sale->id }}</th>
                         <th>{{ $sale->seller->name }}</th>
                         <th>{{ $sale->seller->email }}</th>
-                        <th>{{ $sale->seller->commission }}%</th>
+                        <th>R$ {{ $sale->commission_value }}</th>
                         <th>R$ {{ $sale->sale_value }}</th>
                         <th>{{ $sale->created_at }}</th>					
 						<th>

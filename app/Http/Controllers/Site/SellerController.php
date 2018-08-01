@@ -23,7 +23,7 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $dados = $this->posts->all(); 
+        $dados = $this->posts->all();
         
         return view('site.seller.seller',compact('dados'));
     }

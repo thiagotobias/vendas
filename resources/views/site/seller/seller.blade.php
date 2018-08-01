@@ -19,7 +19,6 @@
                     		<th scope="col">NOME</th>
                     		<th scope="col">E-MAIL</th>
 							<th scope="col">COMISSÃO</th>
-                    		<th scope="col">DATA ADMISSÃO</th>
 						</tr>
 					</thead>
 
@@ -29,8 +28,7 @@
 								<th>{{ $seller->id }}</th>
 								<th>{{ $seller->name }}</th>
 								<th>{{ $seller->email }}</th>
-								<th>{{ $seller->commission }}%</th>
-								<th>{{ $seller->created_at }}</th>
+								<th>{{ $seller->commission }} %</th>
 								<th>
 									<a href="/seller/{{ $seller->id}}">Inspecionar</a>
 								</th>

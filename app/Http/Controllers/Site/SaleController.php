@@ -23,7 +23,7 @@ class SaleController extends Controller
     public function index()
     {
         $sales = $this->posts->all();
-
+//print_r($sales);exit;
         return view('site.sale.sale',compact('sales'));
     }
 

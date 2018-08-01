@@ -29,12 +29,17 @@ class SellersController extends Controller
         $seller->fill($request->all());
         $seller->save();
 
-        return response()->json($seller, 201);
+        $retorno = new Seller();
+        $retorno = $retorno->select('id','name','email')->find($seller->id);
+
+        //$seller = $seller->find($seller->id)->select('name');
+
+        return response()->json($retorno, 201);
     }
 
     public function index()
     {
-        $sellers = Seller::all();
+        $sellers = Seller::select('id','name','email','commission')->get();
         return response()->json($sellers);
     }
 
