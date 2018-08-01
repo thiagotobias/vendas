@@ -17,7 +17,6 @@
                     <th scope="col">ID</th>
                     <th scope="col">NOME</th>
                     <th scope="col">E-MAIL</th>
-                    <th scope="col">DATA ADMISSÃO</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +26,6 @@
                     <th>{{ $vendedor->id }}</th>
                     <td>{{ $vendedor->name }}</td>
                     <td>{{ $vendedor->email }}</td>
-                    <td>{{ $vendedor->created_at }}</td>
                 </tr>
                 {{-- atualizacao do total de vendedores --}}
                 @php
